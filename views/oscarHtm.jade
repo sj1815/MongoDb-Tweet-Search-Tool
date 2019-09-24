@@ -1,0 +1,53 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='utf-8')
+        title Display
+
+        style.
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            td, th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
+
+
+    body
+
+        h2 <center>  Search Results </center>
+        table
+            tr
+                th ProductId
+                th ProfileName
+                th Summary
+                th Text
+            tr
+                td #{doc.ProductId}
+                td #{doc.ProfileName}
+                td #{doc.Summary}
+                td #{doc.Text}
+
+
+        if doc.comments == null
+            p No comments
+        else
+            ul
+                each comment in doc.comments
+                    li #{comment}
+
+        form(action='http://localhost:3000/oscarUpdate')
+            |<strong> Comment: </strong>
+            input(type='hidden', name = 'id', value = '#{doc._id}')
+            br
+            input(type='text', name='ctext')
+            input(type='submit', value='Submit')

@@ -1,0 +1,35 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='utf-8')
+        title MongoNodeJs
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        meta(name='MongoNodeJs', content='Full Stack application to update collections on fly')
+        link(rel='stylesheet', type='text/css', href='search.css')
+
+        style.
+            ul {
+                list-style: none; /* Remove list bullets */
+                padding: 0;
+                margin: 0;
+                color: black;
+            }
+
+            li {
+                padding-left: 100px;
+            }
+    body
+        .topTitle
+            | Search Me
+        .box
+            .container-1
+                form#searchButton(action='http://localhost:3000/page2', method='GET')
+                    input#search(type='Search', placeholder='Tweets', name = 'text')
+                    button.searchButton(type='Enter', value='Search') Search
+
+                <p><strong>Twitter Tweets: #{list.length}</strong>
+                ul
+                    each item in list
+                        li
+                            a(href= "tweetsHtm?id=#{item._id}") #{item.id}<br>
+                            span #{item.fromUser}
